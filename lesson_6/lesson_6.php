@@ -185,10 +185,91 @@ echo isset ($teacher['name']) ? "name is set\n" : "name is not set\n" ;
 echo "<br/>";  
 echo isset ($teacher['address']) ? "address exists" : "adress does not exists\n";
 
+echo "<br/>";  
+//php 7 > only
+$name = $teacher['name'] ?? 'not found';
+$addr= $teacher['addr'] ?? 'not found';
+echo "<br/>";  
+echo("Name = $name");
+echo "<br/>";  
+echo("Address = $addr");
+
 ?>
 
 
+<p>Use the function is_array() to check if it exists in php < 7</p>
+<p>Use the function count() to count the number of elements in the array</p>
+<?php
+
+print "Count: " .count($teacher) . "\n";
+echo "<br/>";  
+
+if( is_array($teacher)) {
+    echo '$teacher is and array'. "\n";
+} else {
+   
+    echo '$teacher is not an array.';
+}
+
+echo "<br/>";  
+echo count($foo);
+
+?>
 
 
+<p>The function sort() does not work very well for key/value arrays because it throws away the keys. This is however okay with a linear array</p>
 
+<?php
+$teacher["language"] = "php";
+print_r($teacher);
+echo "<br/>";  
+sort($teacher);
+print_r($teacher);
+
+
+?>
+
+<p>asort() sort by values and ksort() sort by keys. None of them throws away the keys</p>
+
+<?php
+
+
+$teacher["age"] = 22;
+ksort($teacher);
+
+echo("<pre>\n");
+print_r($teacher);
+echo("</pre>\n");
+
+
+$teacher["married"] = TRUE;
+asort($teacher);
+
+echo("<pre>\n");
+print_r($teacher);
+echo("</pre>\n");
+
+$teacher2= array();
+$teacher2["name"] = "Wanda";
+$teacher2["course"] = "WA4E";
+$teacher2["language"] = "Javascript";
+$teacher2["sex"] = "female";
+$teacher2["married"] = TRUE;
+$teacher2["age"] = 25;
+$teacher2["surname"] = "Anders";
+
+ksort($teacher2);
+
+echo("<pre>\n");
+print_r($teacher2);
+echo("</pre>\n");
+
+
+asort($teacher2);
+
+echo("<pre>\n");
+print_r($teacher2);
+echo("</pre>\n");
+
+?>
 
