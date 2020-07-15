@@ -273,3 +273,19 @@ echo("</pre>\n");
 
 ?>
 
+
+<p>The explode() function cuts a string into an array, similar to split in JS </p>
+
+<?php
+
+$string = "My name is Marina Shemesh and I write code and words";
+echo $string;
+echo "<br/>";  
+
+$temp = explode(' ', $string);
+
+print_r($temp);
+
+echo "<br/>";  
+
+?>
