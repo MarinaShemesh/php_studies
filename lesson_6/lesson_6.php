@@ -132,7 +132,7 @@ foreach($foo as $k => $v){
 echo "<br/>";  
 
 foreach($Israel as $m => $n){
-    echo "Key: ", $m, " Val: ", $n;
+    echo "ey: ", $m, " Val: ", $n;
     echo "<br/>";
 }
 
