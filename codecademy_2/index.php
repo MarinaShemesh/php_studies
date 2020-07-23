@@ -158,6 +158,40 @@ echo str_pad($b, $a, $d, $c);
  ?>
 
 
+<h3>strtoupper()</h3>
+
+<?php
+function convertToShout($string){
+ return strtoupper($string)."!";
+
+}
+
+echo convertToShout("woah there, buddy");
+
+echo "<br/>";
+function tipGenerously($cost){
+    return ceil($cost * 1.2);
+  }
+
+echo tipGenerously(100);
+echo "<br/>";
+echo tipGenerously(982.27)
+?>
+
+<h3>Area of a circle</h3>
+
+<p>The formula for the area of a circle is πr^2. The radius is half of the diameter</p>
+
+<?php
+ function calculateCircleArea($diameter){
+     return pi() * ($diameter/2)**2;
+ }
+
+ echo calculateCircleArea(25)
+?>
+
+<h3>Ordered arrays</h3>
+
 </body>
 </html>
 
