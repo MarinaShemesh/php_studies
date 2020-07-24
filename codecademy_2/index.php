@@ -244,6 +244,29 @@ echo $string_array[0]; // Prints: NEW! different first element"
 
 <?php
 
+$stack = ["wild success", "failure", "struggle"];
+// Write your code below:
+
+array_push($stack, "blocker", "impediment");
+
+echo implode(", ", $stack);
+
+array_pop($stack); 
+print_r($stack);
+echo "<br/>";
+
+array_pop($stack); 
+print_r($stack);
+echo "<br/>";
+
+array_pop($stack); 
+print_r($stack);
+echo "<br/>";
+
+array_pop($stack); 
+print_r($stack);
+
+
 ?>
 
 </body>
