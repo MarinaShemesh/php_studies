@@ -266,6 +266,60 @@ echo "<br/>";
 array_pop($stack); 
 print_r($stack);
 
+?>
+
+<p>The array_shift() function removes the first element of an array and returns that value. Each of the elements in the array will be shifted down an index. For example, the element that was previously at the 3rd index will now be located at the 2nd</p>
+
+<p>The array_unshift() function takes an array as its first argument. The arguments that follow are elements to be added to the beginning of the array. It returns the new number of elements in the array.</p>
+
+<?php
+
+// $record_holders = [];
+// // Write your code below:
+// $arr_len = array_unshift($record_holders,  "Tim Montgomery", "Maurice Greene", "Donovan Bailey", "Leroy Burrell", "Carl Lewis") ;
+
+// echo $arr_len;
+// echo "<br/>";
+// print_r ($record_holders);
+
+$record_holders = [];
+// Write your code below:
+array_unshift($record_holders,  "Tim Montgomery", "Maurice Greene", "Donovan Bailey", "Leroy Burrell", "Carl Lewis") ;
+
+
+echo "<br/>";
+print_r ($record_holders);
+
+array_shift($record_holders);
+echo "<br/>";
+print_r ($record_holders);
+
+?>
+
+<h3>Nested Arrays</h3>
+<?php
+
+$treasure_hunt = ["garbage", "cat", 99, ["soda can", 8, ":)", "sludge", ["stuff", "lint", ["GOLD!"], "cave", "bat", "scorpion"], "rock"], "glitter", "moonlight", 2.11];
+  
+// Write your code below:
+$layer_one = $treasure_hunt[3];
+
+print_r ($layer_one);
+echo "<br/>";
+
+
+
+$layer_two = $layer_one[4];
+print_r ($layer_two);
+echo "<br/>";
+
+$layer_three = $layer_two[2];
+print_r ($layer_three);
+echo "<br/>";
+
+$treasure = $layer_three[0];
+
+echo $treasure;
 
 ?>
 
