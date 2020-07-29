@@ -463,8 +463,82 @@ echo "\n\n";
 echo returnSeason("October");  
 
 ?>
-  
 
+<h3>Ternary Operator</h3>
+<p>PHP offers a short-hand syntax to conditionally return a value.</p>
+  
+<p>It takes three operands and returns a value:<br>
+
+The first operand is a condition to check. This is followed by a question mark ?<br>
+The second operand is an expression to return if the condition is TRUE. This is followed by a colon (:).<br>
+The third operand is an expression to return if the condition is FALSE.<br>
+Let’s see our previous example refactored with the ternary operator:<br>
+
+<br>
+$link_color = $isClicked ? "purple" : "blue"</p>
+
+<?php
+function ternaryCheckout($num){
+ return $num <= 12 ? "express lane" : "regular lane";
+}
+
+echo ternaryCheckout(17);
+?>
+
+<h3>Truthy and Falsy</h3>
+
+<p> We sometimes refer to code that will be converted to TRUE as truthy and code that will be converted to FALSE as falsy<br> since they aren’t actually equivalent to those boolean values, but they will be treated as such in certain contexts.<br> Most values and expressions are treated as truthy, so we’ll focus on those that are falsy:</p>
+
+<ul>
+    <li>Empty strings</li>
+    <li>null</li>
+    <li>an undefined or undeclared variable</li>
+    <li>an empty array</li>
+    <li>the number 0</li>
+    <li>the string "0"</li>
+</ul>
+
+<?php
+echo"<br>";
+    if ("") {
+  echo "this will not print";
+} elseif (null) {
+  echo "this will not print";
+} elseif ([]) {
+  echo "this will not print";
+} elseif (0) {
+  echo "this will not print";
+} elseif ("0") {
+  echo "this will not print";
+} else {
+  echo "Finally!";
+}
+
+function truthyOrFalsy ($value)
+{
+  return $value ? "True" : "False";
+}
+
+echo"<br>";
+echo truthyOrFalsy(0);
+echo"<br>";
+echo truthyOrFalsy(null);
+echo"<br>";
+echo truthyOrFalsy("cat");
+?>
+
+<h3>User Input: readline()</h3>
+
+<p>The built-in readline() function takes a string with which to prompt the user. It waits for the user to enter text into the terminal and returns that value as a string.</p>
+
+<?php
+
+echo "Hi, I'm Aisle Nevertell. What's your name?\n";
+$name = readline(">> ");
+echo "\nNice to meet you, $name";
+?>
+
+</ul>
 </body>
 </html>
 
