@@ -294,6 +294,177 @@ Language:
 To use the data from the form in PHP, each input needs to have a unique name attribute.<br>
 
 When the form is submitted, the input data is available in the $_POST superglobal. Similar to GET, it is also available in $_REQUEST.</p>
+
+<h3>Using the "action" Attribute</h3>
+
+<p>Until now, we’ve been handling the response to the form submission on the same page as the form itself. Often times there is no need to present a user with the same form over and over again. It might make sense to move them to a new page or thank them for their submission.
+<br>
+This is where the action form attribute comes into play. Since we have not specified an action yet, HTML defaults to submitting the form data back to the same script that defined the form.
+<br>
+If you would like to have the user navigate to a new URL and handle the form input there, you can specify the URL in the form’s action attribute. Since the action attribute specifies a relative URL, you can also enter the name of a PHP file in the same directory as the current on</p>
+<hr>
+<form method="get" action="greet_user.php">
+First Name:
+<input type="text" name="first">
+<br><br>
+Last Name:
+<input type="text" name="last">
+<br>
+<input type="submit" value="Submit">
+</form>
+
+<a href="index.php">Reset</a>
+
+<h3>Conditionals </h3>
+
+<?php
+
+
+function chooseCheckoutLane($num){
+  if ($num <= 12){
+    return "express lane";
+  } else {
+   return "regular lane";
+  } 
+}
+
+function canIVote($age){
+  if ($age >= 18) {
+    return "yes";
+  } else {
+    return "no";
+  }
+}
+
+print_r(chooseCheckoutLane(12));
+echo"<br>";
+print_r(chooseCheckoutLane(14));
+echo"<br>";
+print_r(canIVote(12));
+echo"<br>";
+print_r(canIVote(100));
+echo"<br>";
+print_r(date("F"));
+echo"<br>";
+
+function checkRenewalMonth($renewalMonth) {
+    $currentMonth = date("F");
+    if ($renewalMonth !== $currentMonth){
+      return "Welcome!";
+    } else {
+      return "Time to renew";
+    }
+  
+  }
+
+  print_r(checkRenewalMonth("January"));
+
+  ?>
+
+  <h3>Switch Statement</h3>
+  <p>We often want to compare a value, expression, or variable against many different possible values and run different code depending on which it matches. <br>We can use a series of if/elseif statements which use the identical operator (===) or we can use a switch statement—an alternate syntax.</p>
+
+  <?php
+ 
+ function testGrade($letter_grade){
+    switch ($letter_grade){
+        case "A":
+          echo "Terrific";
+          break;
+        case "B":
+          echo "Good";
+          break;
+        case "C":
+          echo "Fair";
+          break;
+        case "D":
+          echo "Needs Improvement";
+          break;
+        case "F":
+          echo "See me!";
+          break;
+        default:
+          echo "Invalid grade"; 
+      }
+ }
+
+ print_r(testGrade("C"));
+ echo"<br>";
+ print_r(testGrade("A"));
+ echo"<br>";
+ print_r(testGrade("X"));
+
+ 
+function airQuality($color){
+    switch ($color){
+      case "green":
+      echo "good";
+      break;
+      case "yellow":
+      echo "moderate";
+      break;
+      case "orange":
+      echo "unhealthy for sensitive groups";
+      break;
+      case "red":
+      echo "unhealthy";
+      break;
+      case "purple":
+      echo "very unhealthy";
+      break;
+      case "maroon":
+      echo "hazardous";
+      break;
+      default:
+      echo "invalid color";
+    }
+  }
+  echo"<br>";
+  echo"<br>";
+  print_r(airQuality("blue")); echo"<br>";
+  print_r(airQuality("maroon")); echo"<br>";
+  print_r(airQuality("red"));
+
+  ?>
+  <p>Use the keyword break after the block for each case. Without the keyword break, not only will the first matching case’s block run, but so will all the code in the subsequent cases! This is known as <i>fall through</i>. <br>The keyword break tells the computer to break out of the switch statement, without it, it will fall through the rest of the switch executing all the code until it reaches a break, a return, or the end of the statement</p>
+
+  <p> Fall through may seem like a drag, but it can be useful when we want multiple cases to execute the same code</p>
+
+  <?php
+
+
+function returnSeason($month){
+  switch ($month) {
+    case "December":
+    case "January":
+    case "February":  
+      return "winter";
+    case "March":
+    case "April":
+    case "May":  
+      return "spring";
+    case "June":
+    case "July":
+    case "August":  
+      return "summer";
+    case "September":
+    case "October":
+    case "November":  
+      return "fall";   
+	} 
+}
+  
+echo returnSeason("February");
+echo "\n\n";  
+echo returnSeason("April");
+echo "\n\n";
+echo returnSeason("August");
+echo "\n\n";
+echo returnSeason("October");  
+
+?>
+  
+
 </body>
 </html>
 
