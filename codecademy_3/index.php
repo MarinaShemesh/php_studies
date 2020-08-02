@@ -531,14 +531,146 @@ echo truthyOrFalsy("cat");
 
 <p>The built-in readline() function takes a string with which to prompt the user. It waits for the user to enter text into the terminal and returns that value as a string.</p>
 
+<p>Note that I did not manage to recreate it here, only in the Codecademy interactive lesson </p>
+
 <?php
 
-echo "Hi, I'm Aisle Nevertell. What's your name?\n";
-$name = readline(">> ");
-echo "\nNice to meet you, $name";
+//echo "Hi, I'm Aisle Nevertell. What's your name?\n";
+//$name = readline(">> ");
+//echo "\nNice to meet you, $name";//php src/index.php
 ?>
 
-</ul>
+
+<h3>Nested conditional statements</h3>
+
+
+<?php
+
+function both($num1, $num2){
+  if($num1) {
+    if ($num2) {
+ 
+    return "both";
+  } else {
+    return "not both";
+  }
+  
+ } else {
+  return "not both";
+ }
+}
+
+
+ echo both(1,2);
+ echo"<br>";
+
+ echo both(TRUE, TRUE);
+ echo"<br>";
+ echo both(FALSE, FALSE);
+ echo"<br>";
+ echo both(TRUE, FALSE);
+ echo"<br>";
+ echo both("cat", 0);
+ echo"<br>";
+ echo both(1234,'');
+ 
+ ?>
+
+<h3>The || operator (or)</h3>
+
+ <?php
+
+function willWeEat($meal, $hungry){
+  if (($meal === "dessert") || $hungry) {
+  echo "Yum. Thanks!";
+} else {
+  echo "No thanks. We're not hungry.";
+}
+}
+ 
+ 
+echo willWeEat("dessert", FALSE);
+echo"<br>";
+echo willWeEat("dessert", TRUE);
+echo"<br>";
+echo willWeEat("cats", TRUE);
+echo"<br>";
+echo willWeEat("cats", FALSE);
+ ?>
+
+<h3>The $$ operator (and); the not operator (!); Xor Operator (exclusive or)</h3>
+
+<p>The logical && operator returns TRUE only if both of its operands evaluate to TRUE. It returns FALSE if either or both of its operands evaluate to false.</p>
+
+<p>Unlike regular 'or' which evaluates to TRUE if either its left operand or its right operand evaluate to TRUE, xor evaluates to TRUE only if either its left operand or its right operand evaluate to TRUE, but not both.</p>
+
+<p>An alternate syntax for logical || operator is the or operator, and an alternate syntax for logical && operator is the and operator. These operators have the advantage of making our code more human readable.</p>
+
+<?php
+
+function clapYourHands($first, $second){
+  if($first && $second){
+    return "CLAP!";
+  } else{
+    return ":(";
+  }
+ }
+ 
+ echo clapYourHands(0, "yes");
+ echo"<br>";
+ echo clapYourHands("happy", "yes");
+ echo"<br>";
+ echo"<br>";
+
+ function duckDuckGoose($is_goose){
+  if (!$is_goose){
+    return "duck";
+  } else {
+    return "goose!";
+  }
+  }
+  
+  echo duckDuckGoose(0);
+  echo"<br>";
+  echo duckDuckGoose("");
+  echo"<br>";
+  echo duckDuckGoose("thing");
+
+
+  $banana_cream = ["whole milk", "sugar", "cornstarch", "salt", "egg yolks", "butter", "vanilla extract", "bananas", "heavy cream", "powdered sugar"];
+$experimental_pie = ["whole milk", "sugar", "bananas", "chicken", "salmon", "garlic"];
+
+// Write your code below:
+
+function eatPie($ingredients){
+  if (in_array("chicken", $ingredients) xor in_array("bananas", $ingredients)){
+    return "Delicious pie!";
+  } else {
+    return "Disgusting!";
+  }
+}
+echo"<br>";
+echo"<br>";
+echo eatPie($banana_cream);
+echo"<br>";
+echo eatPie($experimental_pie);
+
+?>
+
+<h3>Multi-File Programs: include</h3>
+
+<p>Another way to improve our code and separate concerns is with modularity, separating a program into distinct, manageable chunks where each provides a piece of the overall functionality. Instead of having an entire program located in a single file, code is organized into separate files. 
+<br>Each file is then included in our main program with the keyword <i>include.</i>  An include statement will bring the code from a file into the current file and also run the code. It’s as if all the code from that file was written right there. We provide the path to the file to be included as a string.
+<br>
+For example, let’s say we had three files one.php, two.php, and index.php, and we want to include the code from files one.php and two.php inside index.php:</p>
+
+<?php
+
+echo "Hello! ";
+include "one.php";
+include "two.php";
+
+?>
 </body>
 </html>
 
