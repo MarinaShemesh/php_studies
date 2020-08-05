@@ -33,14 +33,14 @@ while ($count < 100)
 
 }
 
-$count = 1;
-while ($count <= 100)
-{
-  if ($count % 33 === 0) {
-    echo $count . " is divisible by 33\n";
-  }
-  $count += 1;
-}
+// $count = 1;
+// while ($count <= 100)
+// {
+//   if ($count % 33 === 0) {
+//     echo $count . " is divisible by 33\n";
+//   }
+//   $count += 1;
+// }
 ?>
 
 <h3>do while</h3>
@@ -103,7 +103,7 @@ for ($i = 2020; $i >=2015 ; $i--)
     echo $i ."<br>";
 } 
 echo "<br>";
-for ($i = 10; $i >= 0; $i--){
+for ($i = 5; $i >= 0; $i--){
     if($i === 2){
       echo "Ready! <br>";
    }
@@ -119,8 +119,205 @@ for ($i = 10; $i >= 0; $i--){
   }
 
 }
-
 ?>
+<h3>foreach</h3>
+
+<p>The foreach loop is used for iterating over an array. The code block is executed for every element in the array and the value of that element is available for use in the code block.</p>
+
+<?php
+$counting_array = [1, 2, 3, 4, 5];
+foreach ($counting_array as $count) {
+  echo "The count is: " . $count . "<br>";
+}
+
+echo "<br>";
+echo "<br>";
+///this gives the key values, and not the keys
+$details_array = ["color" => "blue", "shape" => "square"];
+foreach ($details_array as $detail) {
+  echo "The detail is: " . $detail . "<br>";
+}
+
+echo "<br>";
+
+///this gives the key values, AND the keys
+
+$details_array = ["color" => "red", "shape" => "round"];
+foreach ($details_array as $attribute => $detail) {
+  echo "The " . $attribute . " is: " . $detail . "<br>";
+}
+
+echo "<br>";
+echo "<br>";
+
+$scores = [
+    "Alice" => 99,
+    "Bob" => 95,
+    "Charlie" => 98,
+    "Destiny" => 91,
+    "Edward" => 88
+  ];
+  
+  
+  foreach ($scores as $score) {
+    echo "Someone received a score of " . $score . "<br>";
+  }
+
+
+echo "<br>";
+  
+  foreach($scores as $name => $score){
+   echo $name . " received a score of " . $score . ".<br>";
+  }
+  
+?>
+
+<h3>break and continue</h3>
+
+<p>Similar to switch statements, the break keyword can be used to terminate any of the loop types early. In our counting example of a while loop, if we add a conditional and a break statement:</p>
+
+<p>The continue keyword is similar to break except it only ends the current iteration early, not the entire loop. We could use this in our example to skip counting the number 5:</p>
+
+
+<?php
+
+$num = 1;
+while($num < 10) {
+    echo "The number is " . $num . "<br>";
+    if( $num === 5){
+     break;
+    }
+    $num += 1;
+}
+
+echo "<br>";
+
+
+$count = 1;
+while ($count < 10){
+ 
+    if ($count === 5){
+        $count += 1; ///REMEMBEr to add this so that you will not get an infinite loop
+        continue;
+    }
+    echo " the count is " . $count . "<br>";
+  
+    $count += 1;
+}
+
+echo "<br>";
+echo "<br>";
+for ($i = 10; $i >= 0; $i--) {
+  if ($i === 2) {
+    echo "Ready! <br>";
+  } elseif ($i === 1) {
+    echo "Set! <br>";
+    break; //the loop stops here so we do not go to 0 nor see Go!
+  } elseif ($i === 0) {
+    echo "Go! <br>";
+  } elseif ($i===6) { // you don’t need to add a line to decrement $i since this process takes place outside of the code block
+    continue;
+  } else{
+    echo $i . "<br>";
+  }
+}
+?>
+
+<h3>Loop examples</h3>
+<?php
+#while
+
+ echo "Count down! <br>";
+
+ $count = 5;
+ while ($count > 0){
+   echo $count . "<br>";
+   $count --;
+ }
+
+ echo "Blast off!";
+
+ echo "<br>";
+ echo "<br>";
+
+ #do...while
+
+ $lights = "off";
+do {
+  echo "The lights are " . $lights . "<br>";
+  if ($lights === "off") {
+    $lights = "on";
+  } else {
+    $lights = "off";
+  }
+} while ($lights === "on");
+echo "<br>";
+
+
+# for
+$names = ["Ann", "Bob", "Cassidy", "Dave", "Ed"];
+for ($index = 0; $index < count($names); $index+=2){
+  echo $names[$index] . "<br>";
+}
+echo "<br>";
+
+
+$shopping = ["bread", "apples", "tehina", "pears","nuts", "celery"];
+//echo count($shopping);
+
+for ($i = 0; $i < count($shopping); $i++){
+  echo $i + 1 . " " .$shopping[$i] . "<br>";
+}
+
+echo "<br>";
+# foreach
+$weather = [
+  "temperature" => "cold",
+  "weather" => "rainy",
+  "sky" => "gray"
+              ];
+foreach ($weather as $detail) {
+  echo "the values are $detail. <br>";
+  
+}
+
+echo "<br>";
+echo "<br>";
+$properties = [
+  "temperature" => "cold",
+  "weather" => "rainy",
+  "sky" => "gray"
+              ];
+foreach ($properties as $key=>$value) {
+  echo "The $key is $value. <br>";
+}
+echo "<br>";
+
+$properties = [
+  "temperature" => "cold",
+  "weather" => "rainy",
+  "sky" => "gray"
+              ];
+foreach ($properties as $value) {
+  echo "The $value. <br>";
+}
+
+echo "<br>";
+# break and continue
+# this skips printing Ann and will
+# stop execution after printing
+# Dave
+$names = ["Ann", "Bob", "Cassidy", "Dave", "Ed", "Fohn", "Garry", "Ham"];
+for ($index = 0; $index < count($names); $index+=1){
+  if ($names[$index] == "Bob") {
+    continue;
+  }
+  echo $names[$index] . "<br>";
+  if ($names[$index] == "Garry") {
+    break;
+  }
+}
+ ?>
 
 </body>
 </html>
