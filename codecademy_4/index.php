@@ -676,5 +676,168 @@ Your Favorite Website:
 </form>
 <p> <?= $form_message;?> </p> 
     
+<hr>
+<h3>Using Options with filter_var()</h3>
+<p>The filter_var() function accepts an optional third argument that allows us to fine-tune the operation of a given filter. This argument, often called $options, takes the form of a nested associative array.</p>
+<p>
+For example, the $options argument can help us validate that an integer is within a specified range when using the integer validation filter FILTER_VALIDATE_INT. To do this, we set $options to a nested array containing the"min_range" and "max_range" keys in a specific format, shown in the following example:</p>
+
+<?php
+
+function validateAdult ($age){
+  $options = ["options" => ["min_range" => 18, "max_range" => 124]];  
+  if (filter_var($age, FILTER_VALIDATE_INT, $options)) {
+    echo("You are ${age} years old.");
+  } else {
+    echo("That is not a valid age.");
+  }
+}
+
+validateAdult(18); // Prints: You are 18 years old.
+echo "<br>";
+validateAdult(124); // Prints: You are 124 years old.
+echo "<br>";
+validateAdult(8); // Prints: That is not a valid age.
+echo "<br>";
+validateAdult(200); // Prints: That is not a valid age. 
+
+?>
+
+<hr>
+<?php
+$message = "";
+$month_error = "";
+$day_error = "";
+$year_error = "";
+  
+// Create your variables here:
+
+$month_options = ["options" => ["min_range" => 1, "max_range" => 12]]; 
+
+$day_options = ["options" => ["min_range" => 1, "max_range" => 31]]; 
+
+$year_options = ["options" => ["min_range" => 1903, "max_range" => 2020]]; 
+
+
+// Define your function here:
+function validateInput($type, &$error, $options_arr){
+  if (!filter_var($_POST[$type], FILTER_VALIDATE_INT, $options_arr)) {
+ $error = $error = "* Invalid ${type}";
+return FALSE;
+  } else {
+ return TRUE;
+  } 
+}
+
+
+
+
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Uncomment the code below:
+    $test_month = validateInput("month", $month_error, $month_options);
+    $test_day = validateInput("day", $day_error, $day_options);
+    $test_year = validateInput("year", $year_error, $year_options);    
+    if ($test_month && $test_day && $test_year){
+      $message = "Your birthday is: {$_POST["month"]}/{$_POST["day"]}/{$_POST["year"]}";
+    }  
+  }
+
+?>
+
+<form method="post" action="">
+	Enter your birthday:
+	<br>
+	Month: <input type="number" name="month" value="<?= $_POST["month"];?>">
+	<span class="error"><?= $month_error;?>		</span>
+  <br>
+	Day: <input type="number" name="day" value="<?= $_POST["day"];?>">
+  <span class="error"><?= $day_error;?>		</span>
+	<br>  
+	Year: <input type="number" name="year" value="<?= $_POST["year"];?>">  
+	<span class="error"><?= $year_error;?>		</span>
+	<br>
+	<input type="submit" value="Submit">
+</form>
+    <p><?= $message;?></p>
+
+<?php
+ $name = "Aisle Nevertell";
+$length = strlen($name);
+echo strlen($name);
+echo "<br>";
+if ($length > 2 && $length < 100){
+  echo "That seems like a reasonable name to me...";
+} 
+?>
+
+<hr>
+<?php
+$feedback = "";
+$success_message = "Thank you for your donation!";
+$error_message = "* There was an error with your card. Please try again.";
+
+$card_type = "";
+$card_num = "";
+$donation_amount = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $card_type = $_POST["credit"];
+    $card_num = $_POST["card-num"];
+    $donation_amount = $_POST["amount"];
+
+// Write your code here:
+
+if (strlen($card_num)<100){
+  if ($card_type === "mastercard"){
+    if (preg_match("/5[1-5][0-9]{14}/", $card_num) === 1){
+      $feedback = $success_message;
+    } else {
+      $feedback = $error_message;
+    }
+  } else if ($card_type === "visa") {
+    if (preg_match("/4[0-9]{12}([0-9]{3})?([0-9]{3})?/", $card_num) === 1){
+      $feedback = $success_message;
+    } else {
+      $feedback = $error_message;
+   }
+}
+} else {
+  $feedback = $error_message;
+}
+}
+?>
+<form action="" method="POST">
+  <h1>Make a donation</h1>
+    <label for="amount">Donation amount?</label>
+      <input type="number" name="amount" value="<?= $donation_amount;?>">
+      <br><br>
+    <label for="credit">Credit card type?</label>
+      <select name="credit" value="<?= $card_type;?>">
+        <option value="mastercard">Mastercard</option>
+        <option value="visa">Visa</option>
+      </select>
+      <br><br>
+      <label for="card-num">Card number?</label>
+      <input type="number" name="card-num" value="<?= $card_num;?>">
+      <br><br>   
+      <input type="submit" value="Submit">
+</form>
+<span class="feedback"><?= $feedback;?></span>
+
+<!-- Mastercard
+----------
+Pattern: "/5[1-5][0-9]{14}/"
+Examples:
+5111111111111111
+5522111111111111
+
+Visa
+----------
+Pattern: "/4[0-9]{12}([0-9]{3})?([0-9]{3})?/"
+Examples:
+4004571528446170
+4500040443327765 -->
+
 </body>
 </html>
