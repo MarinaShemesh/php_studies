@@ -306,8 +306,8 @@ echo "<br>";
 # break and continue
 # this skips printing Ann and will
 # stop execution after printing
-# Dave
-$names = ["Ann", "Bob", "Cassidy", "Dave", "Ed", "Fohn", "Garry", "Ham"];
+# Garry
+$names = ["Ann", "Bob", "Cassidy", "Dave", "Ed", "Fohn", "Garry", "Ham", "india"];
 for ($index = 0; $index < count($names); $index+=1){
   if ($names[$index] == "Bob") {
     continue;
@@ -319,5 +319,362 @@ for ($index = 0; $index < count($names); $index+=1){
 }
  ?>
 
+
+ <h3>Loops in HTML</h3>
+
+
+<?php
+for ($i = 0; $i < 5; $i++) {
+?>
+<p>We sell shoes</p>
+<?php
+}
+?>
+
+
+<ul>
+<?php
+for ($i = 0; $i < 4; $i++) {
+?>
+<li>Duck</li>
+<?php
+}
+?>
+<li>Goose</li>
+</ul>
+
+<p>Luckily, PHP offers an alternate syntax which is especially useful when working with HTML. <br>Instead of using an opening bracket ({), we use a colon (:) and instead of using a closing bracket (}), we use a closing keyword and semicolon (;). <br>For the for loop, the closing keyword is endfor. Our duck, duck, goose example becomes:</p>
+
+<p>The only difference is the closing keywords. For a while loop, the closing keyword is endwhile, and for the foreach loop, the closing keyword is endforeach.</p>
+
+<ul>
+<?php
+for ($i = 0; $i < 2; $i++):
+?>
+<li>Duck</li>
+<?php
+endfor;
+?>
+<li>Goose</li>
+</ul>
+
+<p>In the other types of loops the only difference is the closing keywords. For a while loop, the closing keyword is endwhile, and for the foreach loop, the closing keyword is endforeach.</p>
+
+<h4>The veggie shop</h4>
+<?php
+$i = 0;
+$repeats = [0, 1];
+while ($i < 2):
+?>
+<p>We sell vegetables</p>
+  <?php
+  foreach ($repeats as $value):
+  ?>
+  <p>(and also fruit)</p>
+  <?php
+  endforeach;
+  ?>
+<?php
+  $i++;
+endwhile;
+?>
+
+<p>it’s important to remember to re-enter PHP mode before using PHP variables. This can be done using the php opening and closing tags. If you are going to simply be printing the variable using echo, you can also use the echo shorthand opening tag.</p>
+
+<h4>Shoe Shop</h4>
+<?php
+$footwear = [
+  "sandals" => 4,
+  "sneakers" => 7,
+	"boots" => 3
+];
+?>
+<p>Our footwear:</p>
+<?php
+foreach ($footwear as $type => $brands):
+?>
+<p>We sell <?=$brands?> brands of <?=$type?>.</p>
+<?php
+endforeach;
+?>
+
+<h3>Loop examples</h3>
+<?php
+$footwear = [
+  "sandals" => 4,
+  "sneakers" => 7,
+	"boots" => 3
+];
+?>
+<p>Our footwear:</p>
+<h4>foreach</h4>
+<?php
+foreach ($footwear as $type => $brands):
+?>
+<p>We sell <?=$brands?> brands of <?=$type?></p>
+<?php
+endforeach;
+?>
+<h4>for</h4>
+<?php
+$types = [
+  "sandals",
+  "sneakers",
+	"boots"
+];
+$quantities = [
+  4,
+  7,
+	3
+];
+for ($i=0; $i<count($types); $i++):
+?>
+<p>We sell <?=$quantities[$i]?> brands of <?=$types[$i]?></p>
+<?php
+endfor;
+?>
+<h4>while</h4>
+<?php
+$types = [
+  "sandals",
+  "sneakers",
+	"boots"
+];
+$quantities = [
+  4,
+  7,
+	3
+];
+$i = 0;
+while ($i<count($types)):
+?>
+<p>We sell <?=$quantities[$i]?> brands of <?=$types[$i]?></p>
+<?php
+$i++;
+endwhile;
+?>
+
+
+<h1>Welcome To This Form</h1>
+    <form action="" method="POST">
+          <label for="text">You can enter text here:</label>
+    			<input type="text" name="text">
+        <hr>
+          <label for="num">You can enter a number here:</label>
+          <input type="number" name="num">
+        <hr>
+          <label for="slider">You can slide this:</label>
+          <br>
+          <span>Left</span>
+          <input type="range" name="slider" value="3" min="1" max="5">
+          <span>Right</span>
+        <hr>
+       <label for="boxes">You can check these:</label>
+          <input type="checkbox" name="boxes" value="first">
+          <label for="first">First</label>
+          <input type="checkbox" name="boxes"  value="second">
+          <label for="second">Second</label>
+          <input type="checkbox" name="boxes" value="third">
+          <label for="third">Third</label>
+        <hr>
+      <label for="radio">You can select one of these:</label>
+          <input type="radio" name="radio" value="true">
+          <label for="true">TRUE</label>
+          <input type="radio" name="radio" value="false">
+          <label for="false">FALSE</label>
+        <hr>
+          <label for="dropdown">You can select one of these</label>
+          <select name="dropdown">
+            <option value="first">First</option>
+            <option value="second">Second</option>
+            <option value="third">Third</option>
+          </select>
+        <hr>
+          <input type="submit" value="Submit to Reset">
+      </form>
+
+<hr>
+      <h1>Basic HTML Validation</h1>
+    <form action="" method="POST">
+      <label for="text">Enter your name here:</label>
+    	<input id="name" name="name" type="text" required minlength="3" maxlength="100">
+      <br><br>
+      <label for="number">Enter your age here:</label>
+      <input type="number" name="age" id="age" required min="1" max="123">
+      <br><br>
+        <label for="code">Best place to learn to code: (hint: starts with a "C")</label>
+  <input id="code" name="code" type="text" required pattern="[cC]odecademy">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+<hr>
+    <form method="post" action="">
+			Your name:
+			<br>
+  		<input type="text" name="name">
+ 			<br><br>
+  		What is the best thing about learning to code:
+  		<br>
+  		<input type="text" name="best">
+  		<br><br> 
+  		<input type="submit" value="Submit Answers">
+		</form>
+		<a href="index.php">Reset</a>
+    <div id="form-output">
+    <p id="name">Hello, <?= $_POST["name"]?></p>
+    <p id="best"> <?= $_POST["best"]?></p>
+
+    </div>
+
+    <hr>
+   
+    <?php
+function checkWord($input, $letter){
+   if ($_SERVER["REQUEST_METHOD"] === "POST" && strtolower($input[0]) !== $letter) {
+    return "* This word must start with the letter ${letter}!";
+   } else {
+     return "";
+   }
+}
+?>
+  
+<h1>Time to Practice our ABCs</h1>
+<form method="post" action="">
+    Enter a word that starts with the letter "a":
+    <br>
+    <input type="text" name="a-word" id="a-word" value=<?= $_POST["a-word"];?>>
+    <br>
+    <p class="error" id="a-error"><?= checkWord($_POST["a-word"], "a");?></p>
+    <br>
+      
+    Enter a word that starts with the letter "b":
+    <br>
+    <input type="text" id="b-word" name="b-word" value=<?= $_POST["b-word"];?>>
+    <br>
+    <p class="error" id="b-error"><?= checkWord($_POST["b-word"], "b");?></p>
+    <br>
+    Enter a word that starts with the letter "c":
+    <br>
+    <input type="text" id="c-word" name="c-word" value=<?= $_POST["c-word"];?>>
+    <br>
+    <p class="error" id="c-error"><?= checkWord($_POST["c-word"], "c");?></p>
+    <br>
+    <input type="submit" value="Submit Words">
+</form>
+<div>
+    <h3>"a" is for: <?= $_POST["a-word"];?><h3>
+    <h3>"b" is for: <?= $_POST["b-word"];?><h3>
+    <h3>"c" is for: <?= $_POST["c-word"];?><h3>    
+</div>  
+
+<h2>Basic Data Sanitizing</h2>
+
+
+<p>
+When we want to display the user’s input within our own HTML, we should first run it through htmlspecialchars(). This built-in function transforms HTML elements into HTML entities (characters that represent HTML elements but won’t display as HTML), so that the PHP interpreter doesn’t recognize them as HTML. This prevents, for example, a man-in-the-middle attack in which malicious HTML is injected into a user’s view of our site.</p>
+
+
+
+<?php
+$data = "<a href=\"https://www.evil-spam.biz/html/\">Your account has been compromised! Click here to get technical support!!</a>";
+
+echo htmlspecialchars($data);
+///this removes the html tags and prints them as through they are plain strings
+?>
+
+<hr>
+<?php
+$validation_error = "";
+$user_answer = "";
+$submission_response = "";
+
+// Write your code here:
+	if ($_SERVER["REQUEST_METHOD"] === "POST") {
+		$user_answer = filter_var($_POST["answer"], FILTER_SANITIZE_NUMBER_INT);
+  	if ($user_answer != "-5"){
+    	$validation_error = "* Wrong answer. Try again.";
+  	} else {
+      $submission_response = "Correct!";
+    }
+	}
+
+
+
+?>
+<h2>Time for a math quiz!</h2>
+<form method="post" action="">
+<h4>Question 1:</h4>  
+<p>What is 6 - 11?</p> 
+<input type="text" name="answer" id="answer" value="<?= $user_answer;?>">
+<br>
+<span class="error" id="error"><?= $validation_error;?></span> 
+<br> 
+<input type="submit" value="Submit Your Answer">
+</form>
+<div>
+  <p id="answer-display">Your answer was: <?= $user_answer;?></p>
+  <p id="submission-response"><?= $submission_response;?></p>
+</div>
+
+<h3>Basic Validation with filter_var()</h3>
+
+<p>We haven’t yet introduced the most powerful PHP function for sanitizing data: filter_var(). This function operates on a variable and passes it through a “filter” that produces the desired outcome.</p>
+<p>
+As its first argument, filter_var() takes a variable. As its second, it takes an ID representing the type of filtering that should be performed. </p>
+<p>
+There are several filters for sanitizing common input types, including FILTER_SANITIZE_EMAIL. The function will return either the sanitized version of the input or FALSE if it was unable to perform the sanitization.The FILTER_SANITIZE_NUMBER_INT filter removes all illegal characters from a number</p>
+
+<hr>
+<?php
+
+$bad_email = 'fake - at - prank dot com';
+if (filter_var($bad_email, FILTER_VALIDATE_EMAIL)){
+  echo "Valid email!";
+} else {
+  echo "Invalid email!";
+}
+
+echo "<br>";
+$bad_email = 'marina.shemesh@yahoo.com';
+if (filter_var($bad_email, FILTER_VALIDATE_EMAIL)){
+  echo "Valid email!";
+} else {
+  echo "Invalid email!";
+}
+
+?>
+
+<?php
+$validation_error = "";
+$user_url = "";
+$form_message = "";
+
+// Write your code here:
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$user_url = $_POST["url"];
+if (!filter_var($user_url, FILTER_VALIDATE_URL)) {
+ $validation_error = "* This is an invalid URL.";
+ $form_message = "Please retry and submit your form again.";
+} else {
+$form_message = "Thank you for your submission.";
+} 
+
+}
+
+
+?>
+<hr>
+
+<form method="post" action="">
+Your Favorite Website: 
+<br>
+<input type="text" name="url" value="<?php echo $user_url;?>">
+<span class="error"><?= $validation_error;?></span>
+<br>
+<input type="submit" value="Submit">
+</form>
+<p> <?= $form_message;?> </p> 
+    
 </body>
 </html>
