@@ -838,6 +838,67 @@ Pattern: "/4[0-9]{12}([0-9]{3})?([0-9]{3})?/"
 Examples:
 4004571528446170
 4500040443327765 -->
+<?php
 
+
+
+echo "<br>";
+echo "<br>";
+  $users = ["coolBro123" => "password123!", "coderKid" => "pa55w0rd*", "dogWalker" => "ais1eofdog$"];
+
+function isUsernameAvailable ($username){
+  global $users;
+  if (isset($users[$username])){//isset checks if the varialel has been set
+    echo $users[$username];//this gets the value
+  } else {
+    echo "${username} is available.";//this gets the key
+  }
+}
+
+isUsernameAvailable("coolBro123");
+echo "<br>";
+
+isUsernameAvailable("aisleOfPHP");
+
+?>
+<hr>
+<h3>Validating Against Back-end Data</h3>
+
+<?php
+$users = ["coolBro123" => "password123!", "coderKid" => "pa55w0rd*", "dogWalker" => "ais1eofdog$"];  
+  
+  
+$feedback = "";
+$message = "You're logged in!";
+$validation_error = "* Incorrect username or password.";
+$username = "";
+
+// Write your code here:
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+  
+    if (isset($users[$username]) && $password === $users[$username]) {
+    $feedback = $message ;
+  } else {
+    $feedback = $validation_error;
+  }
+}
+
+
+
+
+?>
+  
+<h3>Welcome back!</h3>
+<form method="post" action="">
+Username:<input type="text" name="username" value="<?php echo $username;?>">
+<br>
+Password:<input type="text" name="password" value="">
+<br>
+<input type="submit" value="Log in">
+</form>
+<span class="feedback"><?= $feedback;?></span>
 </body>
 </html>
