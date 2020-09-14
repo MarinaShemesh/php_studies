@@ -840,15 +840,13 @@ Examples:
 4500040443327765 -->
 <?php
 
-
-
 echo "<br>";
 echo "<br>";
   $users = ["coolBro123" => "password123!", "coderKid" => "pa55w0rd*", "dogWalker" => "ais1eofdog$"];
 
 function isUsernameAvailable ($username){
   global $users;
-  if (isset($users[$username])){//isset checks if the varialel has been set
+  if (isset($users[$username])){//isset checks if the variable has been set
     echo $users[$username];//this gets the value
   } else {
     echo "${username} is available.";//this gets the key
@@ -900,5 +898,109 @@ Password:<input type="text" name="password" value="">
 <input type="submit" value="Log in">
 </form>
 <span class="feedback"><?= $feedback;?></span>
+
+<br>
+<hr>
+
+<h3>preg_replace()</h3>
+<p>To sanitize data formatting, we can use the built-in preg_replace() function. The preg_replace() takes a regular expression, some replacement text, and a subject string; First, It searches through the subject string for instances that match the regular expression. Then, it outputs a copy of the subject string that has the matched instances replaced by the replacement string:</p>
+
+<?php
+
+$one = "codeacademy";
+$two = "CodeAcademy";
+$three = "code academy";
+$four = "Code Academy";
+
+$pattern = "/[cC]ode\s*[aA]cademy/";
+$codecademy = "Codecademy";
+
+echo preg_replace($pattern, $codecademy, $one);
+// Prints: Codecademy
+echo "<br>";
+echo preg_replace($pattern, $codecademy, $two);
+// Prints: Codecademy
+echo "<br>";
+echo preg_replace($pattern, $codecademy, $three);
+// Prints: Codecademy
+echo "<br>";
+echo preg_replace($pattern, $codecademy, $four);
+
+?>
+
+<p>The pattern "/[^0-9]/" matches any character that isn’t the numbers 0 through 9. Using preg_replace(), we’ll replace all of those matched characters with an empty string—thus removing them. This will leave us with only the number characters remaining (stripping away all parentheses, hyphens, spaces, period, etc). Let’s look at some examples of how this works:</p>
+
+<?php
+echo preg_replace("/[^0-9]/", "", "123 - 989 - 1234");
+// Prints: 1239891234
+echo "<br>";
+echo preg_replace("/[^0-9]/", "", "123.989.1234");
+// Prints: 1239891234
+echo "<br>";
+echo preg_replace("/[^0-9]/", "", "(123) 989 - 1234");
+// Prints: 1239891234
+echo "<br>";
+?>
+
+
+<?php
+$contacts = ["Susan" => "5551236666", "Alex" => "7779991717", "Lily" => "8181117777"];  
+$message = "";
+$validation_error = "* Please enter a 10-digit phone number.";
+$name = "";
+$number = "";
+
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   $name = $_POST["name"];
+   $number  = $_POST["number"];
+   // Write your code here:
+   if (strlen($number)<30){
+     $formatted_number = preg_replace("/[^0-9]/", "", $number);
+     if (strlen($formatted_number)===10){
+       $contacts[$name] = $formatted_number;//here we add it to the contacts array
+       $message = "Thanks ${name}, we'll be in touch.";
+     } else {
+       $message = $validation_error;
+     } 
+   } else {
+     $message = $validation_error;
+   }
+};
+
+
+?>
+<html>
+	<body>
+  <h3>Contact Form:</h3>
+		<form method="post" action="">
+			Name:
+			<br>
+  		<input type="text" name="name" value="<?= $name;?>">
+ 			<br><br>
+  		Phone Number:
+  		<br>
+  		<input type="text" name="number" value="<?= $number;?>">
+  		<br><br> 
+  		<input type="submit" value="Submit">
+		</form>
+		<div id="form-output">
+			<p id="response"><?= $message?></p>
+    </div>
+
+    <hr>
+
+<p>This is the contacts array:</p>
+
+<?php
+    print_r($contacts);
+?>
+
+<h3>header()</h3>
+
+<p>We can use the PHP header() function to perform redirects. We call the header() function on a string that begins with "Location: ", followed by the URL we want to redirect the user to. For example: "Location: https://www.best-puppy-pix.com/". After invoking the header() function we’ll want to use the language construct exit to terminate the current script.</p>
+<p>
+To work properly, the header() function needs to be run before anything is output by the script—this includes HTML. So we’ll include it in our PHP script before our file outputs any HTML:</p>
+
+<p>Navigate to http://localhost/codecademy_4/header.php to check this out.</p>
 </body>
 </html>

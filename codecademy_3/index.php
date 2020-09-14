@@ -619,7 +619,7 @@ function clapYourHands($first, $second){
  echo clapYourHands(0, "yes");
  echo"<br>";
  echo clapYourHands("happy", "yes");
- echo"<br>";
+ echo"<br>";`
  echo"<br>";
 
  function duckDuckGoose($is_goose){
