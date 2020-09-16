@@ -132,6 +132,42 @@ print_r($_POST);
 print_r($_POST);
 ?>
 </pre>
+<hr>
+
+<h4>HTML input types</h4>
+
+<form method="post" action="lesson_8.php">
+
+<p>Select your favourite color:
+<input type="color" name="favcolor" value ="0000ff"><br/><br/>
+Birthday: 
+<input type="date" name ="bday" value = "09-05-1969"><br/><br/>
+Email: 
+<input type="email" name ="email"><br/><br/>
+Quantity (between 1 and 5):
+<input type="number" name ="quantity"><br/><br/>
+min="1" max="5"<br/>
+Add your homepage:
+<input type="url" name ="homepage"><br/><br/>
+Transportation:
+<input type="flyinh" name ="saucer"><br/> <!-- even weird things will work -->
+<input type="submit" name="dopost" value="Submit">
+</form>
+
+</p>
+
+<pre>$_POST:
+
+<?php
+print_r($_POST);
+?>
+</pre>
+<hr>
+
+<h4>Always use htmlentities() when you work with data filled in by the user</h4>
+
+<h4>Model - view - controller</h4>
+<p>Place your php code at the top and the html at the bottom</p>
 
 
 </body>
