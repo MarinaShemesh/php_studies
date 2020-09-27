@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +14,14 @@
  <form action="process.php" method="POST">
  <p>
   <label>Username:</label>
-  <input type="text" id="user" name="user"/>
+  <input type="text" id="username" name="username"/>
  </p>
 
  <p>
   <label>Password:</label>
   <input type="password" id="password" name="password"/>
  </p>
- 
+
  <p>
   <input type="submit" id="button" value="Log in"/>
  </p>
