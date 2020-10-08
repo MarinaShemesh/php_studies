@@ -1,13 +1,3 @@
-<?php
-$question = array("2 * 2"=> 4, "6 * 3"=>18, "10 / 5"=> 2);
-echo $question["2 * 2"];
-echo $question["6 * 3"];
-echo $question["10 / 5"];
-
-?>
-
-
-
 
 
 
@@ -24,22 +14,9 @@ echo $question["10 / 5"];
 <body>
 <div class="container">
 <h1>Let's play</h1>
-
-<div class="container">
 <form>
 <label for="nam">2 * 2</label>
 <input type="text" id="pin" name="one" maxlength="4" size="4"><br><br>
-
-<?php
-if($question["2 * 2"] == $_GET["one"]){
-    echo "that is correct!";
-} else {
-    echo "that is npt correct";
-  
-}
-
-?>
-<br><br>
 
 <label for="nam">6 * 3</label>
 <input type="text" id="pin" name="two"><br><br>
@@ -54,11 +31,31 @@ $_GET:
 
 <?php
 print_r($_GET);
+
 ?>
+
+
 </pre>
 
 
 </form>
+
+<?php
+$question = array("2 * 2"=> 4, "6 * 3"=> 18, "10 / 5"=> 2);
+// echo $question["2 * 2"];echo "<br>";
+// echo $question["6 * 3"];echo "<br>";
+// echo $question["10 / 5"];echo "<br>";
+
+
+$guess1 = $_GET['one'];
+$guess2 = $_GET['two'];
+$guess3 = $_GET['three'];
+
+
+echo $guess1;
+echo $guess2;
+echo $guess3;
+?>
 
 </div>
 </body>
